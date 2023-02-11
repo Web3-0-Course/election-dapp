@@ -12,7 +12,7 @@ describe("Election Contract", function(){
         await electionContract.deployed();
 
         console.log("There should be no probs in deploying : ", electionContract.address);
-        console.log('Address  of first candidate : ', addr0.address);
+        console.log('Address  of first candidate : ', addr1.address);
         console.log('Address  of second candidate ', addr2.address);
         console.log('Address of third candidate ', addr3.address);
 

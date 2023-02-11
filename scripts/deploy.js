@@ -4,7 +4,8 @@ const main = async () => {
 
     await electionContract.deployed()
 
-    console.log("Election contract deployed on : ", electionContract.address); 
+    console.log("Election contract deployed on : ", electionContract.address);
+     
 }
 
 const runMain = async () => {
