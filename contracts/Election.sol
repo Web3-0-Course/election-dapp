@@ -43,19 +43,20 @@ contract Election {
         console.log("Number of candidates : ",candidatesCount);
     }
 
-    function vote (uint _candidateId) public {
+    function vote(uint _candidateId, address _voter) public {
         // require that they haven't voted before
-        require(!voters[msg.sender],"Voter has already voted");
+        require(!voters[_voter],"Voter has already voted");
 
         // limit the number of votes cast by an address to 1
-        require(votes[msg.sender] == 0);
+        require(votes[_voter] == 0);
 
         // require a valid candidate
         require(_candidateId > 0 && _candidateId <= candidatesCount,"Invalid Candidate ID");
 
         // record that voter has voted
-        voters[msg.sender] = true;
-        votes[msg.sender] ++;
+        
+        voters[_voter] = true;
+        votes[_voter] ++;
 
         //update candidate vote count
         candidates[_candidateId].voteCount ++;
@@ -63,4 +64,16 @@ contract Election {
         // trigger voted count;
         emit votedEvent(_candidateId);
     } 
+
+    fallback() payable external {
+       // code
+    
+        revert("Transaction rejected :  function not found"); 
+    } 
+
+    receive() payable external {
+        revert("Transaction rejected : data not found");
+    }
+
+
 }

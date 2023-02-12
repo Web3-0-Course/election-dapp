@@ -8,7 +8,6 @@ function App() {
   return (
     <div className='App' >
       <header>
-      <h1>Decentralized Voting Application</h1>
       <Voting />
       </header>
     </div>

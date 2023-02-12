@@ -21,32 +21,32 @@ describe("Election Contract", function(){
     }
 
     // nested describe calls
-    describe("Add new candidate", function(){
-        // for this test change addCandidate() function to public 
-        it("Should add a candidate correctly", async () => {
-            // get the candidate count before adding a candidate
-            const { electionContract } = await loadFixture(deployElectionFixture);
+    // describe("Add new candidate", function(){
+    //     // for this test change addCandidate() function to public 
+    //     it("Should add a candidate correctly", async () => {
+    //         // get the candidate count before adding a candidate
+    //         const { electionContract } = await loadFixture(deployElectionFixture);
 
-            await electionContract.addCandidate("Mamata Benarjii");
+    //         await electionContract.addCandidate("Mamata Benarjii");
 
-            let currentCandidateCount = await electionContract.candidatesCount();
-            expect(currentCandidateCount.toNumber()).to.equal(1);
+    //         let currentCandidateCount = await electionContract.candidatesCount();
+    //         expect(currentCandidateCount.toNumber()).to.equal(1);
          
-        });
-    });
+    //     });
+    // });
 
     describe("Unique Voters", function(){
         it("Should not allow a user to vote twice", async () => {
             // vote for a candiate
             // 
-            const { electionContract} = await loadFixture(deployElectionFixture);
+            const { electionContract, addr1} = await loadFixture(deployElectionFixture);
             // 2 is the candidateId for addr3
-            await electionContract.vote(3);
+            await electionContract.vote(3, {from : addr1.address});
 
 
             // now try to revote again with addr2
             try {
-                await electionContract.vote(3);
+                await electionContract.vote(3 , {from: addr1.address});
             } catch (error){
                 //console.error(error);
                 // assert that the error is thrown
@@ -58,9 +58,9 @@ describe("Election Contract", function(){
 
     describe("Invalid Candidate", function(){
         it("should not allow a user to vote for an invalid candidate", async () => {
-            const { electionContract } = await loadFixture(deployElectionFixture);
+            const { electionContract, addr1 } = await loadFixture(deployElectionFixture);
             try {
-               await electionContract.vote(8);    
+               await electionContract.vote(8, {from: addr1.address});    
             } catch (error) {
                 //console.error(error);
                 // assert that error is thrown

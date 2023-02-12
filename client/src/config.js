@@ -1,4 +1,4 @@
-export const CONTRACT_ADDRESS = '0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9';
+export const CONTRACT_ADDRESS = '0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0';
 
 export const CONTRACT_ABI = [
   {
@@ -18,6 +18,10 @@ export const CONTRACT_ABI = [
     ],
     "name": "votedEvent",
     "type": "event"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "fallback"
   },
   {
     "inputs": [
@@ -80,12 +84,18 @@ export const CONTRACT_ABI = [
         "internalType": "uint256",
         "name": "_candidateId",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "_voter",
+        "type": "address"
       }
     ],
     "name": "vote",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
+    "type": "function",
+    "signature": "0x3f371076"
   },
   {
     "inputs": [
@@ -124,5 +134,10 @@ export const CONTRACT_ABI = [
     ],
     "stateMutability": "view",
     "type": "function"
+  },
+  {
+    "stateMutability": "payable",
+    "type": "receive"
   }
-]
+
+] 
