@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.17;
 
+import "hardhat/console.sol";
+
 contract Election {
 
     // model a candidate
@@ -28,16 +30,17 @@ contract Election {
         uint indexed _candidateId
     );
 
-    function Election_() public {
-        addCandidate("Arvind Kejriwal");
-        addCandidate("Narendra Modi");
-        addCandidate("Rahul Gandhi");
-    }
-
-    function addCandidate (string memory _name) private {
+    function addCandidate (string memory _name) public {
         candidatesCount++;
         candidates[candidatesCount] = Candidate(candidatesCount, _name, 0);
 
+    }
+
+    constructor() {
+        addCandidate("Arvind Kejriwal");
+        addCandidate("Narendra Modi");
+        addCandidate("Rahul Gandhi");
+        console.log("Number of candidates : ",candidatesCount);
     }
 
     function vote (uint _candidateId) public {
