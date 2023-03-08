@@ -47,4 +47,4 @@ npx hardhat run scripts/deploy.js --network goerli
 
 ```
 
-**Consider updating contract address in ```client/src/config.js``` file on every re-deployment if your contract address changes tbh**
+**Consider updating contract address in ```client/src/config.js``` file on every re-deployment if your contract address changes tbh**# ipfs-clone
