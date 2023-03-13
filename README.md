@@ -1,6 +1,6 @@
-## 👷‍♀️ Election Decentralised Application with React.js and Ethereum
+# 👷‍♀️ Election Decentralised Application with React.js and Ethereum
 
-### About the smart contract
+## About the smart contract
 
 * Our Smart Contract created three candidates on execution through constructor.
 <br />
@@ -46,5 +46,11 @@ or
 npx hardhat run scripts/deploy.js --network goerli
 
 ```
+
+#### UI
+
+<p align="center">
+  <img src="./client/public/ss.png" />
+</p>
 
 **Consider updating contract address in ```client/src/config.js``` file on every re-deployment if your contract address changes tbh**# ipfs-clone
